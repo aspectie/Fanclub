@@ -22,7 +22,6 @@ def main():
             write_msg(event.user_id, bot.new_message(event.text))
 
             print(' Сообщение:', event.text)
-            print(bot._USERNAME)
 
 if __name__ == '__main__':
     main()

@@ -1,9 +1,9 @@
 from profile import _profile
 import vk_api
 import vk
-from api_keys import access_token
+from api_keys import token
 
-session = vk.Session(access_token = access_token)
+session = vk.Session(access_token = token)
 version = '5.89'
 
 vk_api = vk.API(session, v = version)
