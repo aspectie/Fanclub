@@ -4,26 +4,25 @@ from vk_bot import VkBot
 from api_keys import token, group_id
 
 # Авторизация
-vk_sesion = vk_api.VkApi(token = token)
-session_api = vk_sesion.get_api()
-longpoll = VkLongPoll(vk_sesion)
+vk_session = vk_api.VkApi(token = token)
+session_api = vk_session.get_api()
+longpoll = VkLongPoll(vk_session)
 
 def write_msg(user_id, message):
-    vk_sesion.method('messages.send', {'user_id': user_id, 'message': message, 'random_id' : 0})
+    vk_session.method('messages.send', {'user_id': user_id, 'message': message, 'random_id' : 0})
 
 # Основной цикл
 def main():
     for event in longpoll.listen():
-        if event.type == VkEventType.MESSAGE_NEW:
-            if event.to_me:
-                print('New message:')
-                print(f'For me by: {event.user_id}', end='')
+        if event.type == VkEventType.MESSAGE_NEW and event.to_me:
+            print('Новое сообщение:')
+            print(f'От пользователя: {event.user_id}', end='')
 
-                bot = VkBot(event.user_id)
-                write_msg(event.user_id, bot.new_message(event.text))
+            bot = VkBot(event.user_id)
+            write_msg(event.user_id, bot.new_message(event.text))
 
-                print(' Text: ', event.text)
+            print(' Сообщение:', event.text)
+            print(bot._USERNAME)
 
 if __name__ == '__main__':
     main()
-

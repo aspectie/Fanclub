@@ -1,42 +1,27 @@
-import bs4
-import requests
 from profile import _profile
+import vk_api
+import vk
+from api_keys import access_token
+
+session = vk.Session(access_token = access_token)
+version = '5.89'
+
+vk_api = vk.API(session, v = version)
+
 
 # Основной класс бота
 class VkBot:
     # Инициализация
     def __init__(self, user_id):
         self._USER_ID = user_id
-        self._USERNAME = self._get_user_name_from_vk_id(user_id)
+        self._USERNAME = self._get_user_name(user_id)
         self._COMMANDS = ["привет", "биба"]
 
-    def _get_user_name_from_vk_id(self, user_id):
-        request = requests.get("https://vk.com/id" + str(user_id))
-        bs = bs4.BeautifulSoup(request.text, "html.parser")
-        user_name = self._clean_all_tag_from_str(bs.findAll("title")[0])
+    def _get_user_name(self, user_id):
+        user_obj = vk_api.users.get(user_id = user_id)
+        user_name = user_obj[0]['first_name']
 
-        return user_name.split()[0]
-
-    @staticmethod
-    def _clean_all_tag_from_str(string_line):
-        """
-        Очистка строки stringLine от тэгов и их содержимых
-        :param string_line: Очищаемая строка
-        :return: очищенная строка
-        """
-        result = ""
-        not_skip = True
-        for i in list(string_line):
-            if not_skip:
-                if i == "<":
-                    not_skip = False
-                else:
-                    result += i
-            else:
-                if i == ">":
-                    not_skip = True
-
-        return result
+        return user_name
 
     def new_message(self, message):
         # Привет
