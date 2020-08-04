@@ -4,7 +4,7 @@ from vk_bot import VkBot
 
 
 # API-ключ
-token = '5f02dd28cbc30080117ddf19f6b597e62803bd37da5d4839c59f62cc0f2ad961abc9dac18249a37dd5d4d'
+
 
 # Авторизация
 vk_sesion = vk_api.VkApi(token = token)
