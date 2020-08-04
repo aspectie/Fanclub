@@ -1,4 +1,0 @@
-# API-ключ
-token = '5f02dd28cbc30080117ddf19f6b597e62803bd37da5d4839c59f62cc0f2ad961abc9dac18249a37dd5d4d'
-group_id = '186777464'
-access_token = '2a37590b5a7a57655d8a6ec1f608e0bf8a53b1cb4abc02ac607523034efbb05035f1dba50ac4f1a72ba98'
