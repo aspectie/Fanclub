@@ -1,4 +1,4 @@
 venv/*
 .idea/*
 __pycache__/*
-api_keys.git rm --cached
+api_keys.py
