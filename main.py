@@ -1,11 +1,13 @@
 import vk_api
 from vk_api.longpoll import VkLongPoll, VkEventType
 from vk_bot import VkBot
+import Enter_values
 
 
 # API-ключ
 
-
+token = Enter_values.token
+group_id=Enter_values.group_id
 # Авторизация
 vk_sesion = vk_api.VkApi(token = token)
 session_api = vk_sesion.get_api()
