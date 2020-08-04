@@ -2,8 +2,9 @@ import vk_api
 from vk_api.longpoll import VkLongPoll, VkEventType
 from vk_bot import VkBot
 
+
 # API-ключ
-token = 'bc1c95b46f44fd7c8379e6e3be31886eb27a85d7e761990ca1769de3bb55b7c22d31c6c7e2b21c0973c4d'
+token = '5f02dd28cbc30080117ddf19f6b597e62803bd37da5d4839c59f62cc0f2ad961abc9dac18249a37dd5d4d'
 
 # Авторизация
 vk_sesion = vk_api.VkApi(token = token)
@@ -23,4 +24,4 @@ for event in longpoll.listen():
             bot = VkBot(event.user_id)
             write_msg(event.user_id, bot.new_message(event.text))
 
-            print('Text: ', event.text)
+            print(' Text: ', event.text)
