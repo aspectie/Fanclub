@@ -1,54 +1,56 @@
 from PIL import Image, ImageDraw, ImageFont
 import requests
 import sys
-import sys
+
 import shelve
 import random
 import os
-mass = []
-shelveFile = shelve.open(r'C:\Users\danii\Desktop\Vk_Bot\VKbot_env\defs\differentValues')
-shelveFile['value']+=1
-x = shelveFile['value']
-
-string = 'https://www.thiswaifudoesnotexist.net/example-'+str(x)+'.jpg'
-print(string)
 
 
 
 
-url = string
- 
+def profile_create(userName):
+    shelveFile = shelve.open(os.getcwd() + '\\Desktop\\Fanclub\\defs\\differentValues')
+    shelveFile['value']+=1
+    x = shelveFile['value']
 
-resp = requests.get(url, stream=True).raw
-
-
-
-img = Image.open(resp)
-
-t_d = ImageDraw.Draw(img)
+    string = 'https://www.thiswaifudoesnotexist.net/example-'+str(x)+'.jpg'
+    #print(string)
 
 
 
-for foldername, subfoldernames, filenames in os.walk(r'C:\Users\danii\Desktop\Vk_Bot\VKbot_env\defs\differentValues\fonts'):
- 
-    for filename in filenames:
-        mass.append(filename)
-        
+
+    url = string
     
 
-random.shuffle(mass)
-print(mass)
-
-font = 'C:/Users/danii/Desktop/Vk_Bot/VKbot_env/defs/differentValues/fonts/' + mass[0]
-#C:\Users\danii\Desktop\Vk_Bot\VKbot_env\defs\differentValues\fonts
-#font = ImageFont.truetype("arial.ttf", size=80)
-text = 'future_Username'
+    resp = requests.get(url, stream=True).raw
 
 
-font = ImageFont.truetype(font,  size=100)
 
- 
-t_d.text((200, 880), text, font=font, fill=(15,150,56,220))
+    img = Image.open(resp)
 
-img.show()
-img.save('C:/Users/danii/Desktop/Vk_Bot/VKbot_env/defs/differentValues/Profile'+str(x)+'.jpg')
+    t_d = ImageDraw.Draw(img)
+
+
+    fonts_mass = []
+    for foldername, subfoldernames, filenames in os.walk(os.getcwd() + '\\Desktop\\Fanclub\\defs\\differentValues\\fonts'):
+    
+        for filename in filenames:
+            fonts_mass.append(filename)
+            
+        
+
+    random.shuffle(fonts_mass)
+    print(fonts_mass)
+
+    font = os.getcwd() + '\\Desktop\\Fanclub\\defs\\differentValues\\fonts\\' + fonts_mass[0]
+    
+    text = userName
+    print('\n'+font)
+
+    font = ImageFont.truetype(font,  size=100)
+    t_d.text((200, 880), text, font=font, fill=(15,150,56,220))
+    save_line = os.getcwd() + '\\Desktop\\Fanclub\\defs\\differentValues\\profPictures\\' +str(x)+ '.jpg'
+    img.save(save_line)
+
+    return(save_line)
