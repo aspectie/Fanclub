@@ -41,12 +41,12 @@ def profile_create(userName):
         
 
     random.shuffle(fonts_mass)
-    print(fonts_mass)
+    #print(fonts_mass)
 
     font = os.getcwd() + '\\Desktop\\Fanclub\\defs\\differentValues\\fonts\\' + fonts_mass[0]
     
     text = userName
-    print('\n'+font)
+    #print('\n'+font)
 
     font = ImageFont.truetype(font,  size=100)
     t_d.text((200, 880), text, font=font, fill=(15,150,56,220))

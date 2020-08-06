@@ -5,7 +5,7 @@ import authorization
 
 # Авторизация
 authorization.log()
-print(authorization.log())
+
 
 vk_session=authorization.log()[0]
 session_api=authorization.log()[1]
