@@ -1,0 +1,26 @@
+{   "inline": true,
+    "buttons": [
+      [{
+        "action": {
+          "type": "text",
+          "label": "я дд"
+        },
+        "color": "negative"
+      }],
+      [{
+        "action": {
+          "type": "text",
+          "label": "я танк"
+        },
+        "color": "primary"
+      }],
+      [{
+        "action": {
+          "type": "text",
+          "label": "я хилер"
+        },
+        "color": "positive"
+      }]
+      
+    ]
+  }

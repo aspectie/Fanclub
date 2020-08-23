@@ -1,0 +1,20 @@
+{
+    "one_time": true,
+    "buttons": [
+      [{
+        "action": {
+          "type": "text",
+          "label": "поднимится"
+        },
+        "color": "positive"
+      },
+        {
+          "action": {
+            "type": "text",
+            "label": "упадёт блин"
+          },
+          "color": "negative"
+        }]
+      
+    ]
+  }

@@ -1,0 +1,19 @@
+{   "inline": false,
+    "buttons": [
+      [{
+        "action": {
+          "type": "text",
+          "label": "!профиль"
+        },
+        "color": "positive"
+      },
+        {
+          "action": {
+            "type": "text",
+            "label": "аниме топ"
+          },
+          "color": "negative"
+        }]
+      
+    ]
+  }
