@@ -29,7 +29,7 @@ def sell_item(user_id, item_id):
     shelvefile['money']=money_add(user_id, q_money, money_list)
     #добавить деняг
     #shelvefile.close()
-
+    
 def inventory_show(user_id):
     shelvefile = shelve.open(path_get())
     all_inv = shelvefile['inventories']
@@ -115,6 +115,7 @@ def money_show(user_id):
     shelvefile = shelve.open(path_get())
     money_list = shelvefile['money'][user_id]
     #shelvefile.close()
+    print(money_list)
     return(str(money_list)+'🗿')
 
 

@@ -46,7 +46,8 @@ class person_create:
 
     def data_save(self, shelvefile, user_id, class_player):
         
-        save_list = {'class_player':class_player}
+        save_list = {'class_player':class_player,
+                     'hp':100}
         print(save_list)
         shelvefile[str(user_id)] = save_list
     
@@ -82,7 +83,9 @@ class Boss:
         self.hp = 10#2.+- от количества игроков (plater_list = shelvefile['player_list'])4
         self.damage = 10#3.+- ...
 
-    def attack(self):
-        pass #сделать атаку, оборону и другие функции
+    def attack(self, user_takes_damage):
+        data_player=shelvefile[str(user_takes_damage)]
+        data_player['hp']=data_player['hp']-self.damage
+        shelvefile[str(user_id)] =data_player
     
 
