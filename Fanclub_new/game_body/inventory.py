@@ -16,6 +16,7 @@ def sell_item(user_id, item_id):
     shelvefile = shelve.open(path_get())
     money_list = shelvefile['money']
     all_inv = shelvefile['inventories']
+    print(all_inv)
     #print(str(all_inv[user_id])+' до удаления')
     
     if weap_list[item_id]['rare']=='common':
@@ -39,7 +40,7 @@ def inventory_show(user_id):
     message_chest=''
     message_Legs=''
     message_Feet=''
-   
+    all_inv.setdefault(user_id, [])
     for equip in all_inv[user_id]:
         if weap_list[equip]['type'] == 'weapon':
             message_weap+=weap_list[equip]['name']+'('+equip+')|||'+'⚔'+ weap_list[equip]['damage']+'🛡'+weap_list[equip]['armor']+'💊'+weap_list[equip]['heal_lvl']+'\n'
@@ -63,13 +64,16 @@ def item_equip(user_id, item_id):
     equip_inv = shelvefile['equip']
     all_inv = shelvefile['inventories']
     if item_id in all_inv[user_id]:
-        
+        #
+        #equip_inv = shelvefile['equip']
+        #equip_inv={123:{шлем:4,ноги:14}}
         
         item_type = weap_list[item_id]['type']
 
         equip_inv[user_id]=equip_inv.get(user_id, {'Head':'','Chest':'','weapon':'','Legs':'','Feet':''}) 
 
         equip_inv[user_id][weap_list[item_id]['type']]=weap_list[item_id]['name']
+        
         shelvefile['equip'] = equip_inv
         
         message = 'надетый шмот:'+ '\nголова:'+equip_inv[user_id]['Head']+'\nгрудь'+equip_inv[user_id]['Chest']+'\nоружие:'+equip_inv[user_id]['weapon']+'\nноги:'+equip_inv[user_id]['Legs']+'\nботинки:'+equip_inv[user_id]['Legs']
@@ -81,9 +85,11 @@ def item_equip(user_id, item_id):
     else:
         message='у тебя такого нет'
     return(message)
+    
 def equiped_items_show(user_id):
     shelvefile = shelve.open(path_get())
     equip_inv = shelvefile['equip']
+    equip_inv[user_id]=equip_inv.get(user_id, {'Head':'','Chest':'','weapon':'','Legs':'','Feet':''}) 
     message = 'надетый шмот:'+ '\nголова:'+equip_inv[user_id]['Head']+'\nгрудь'+equip_inv[user_id]['Chest']+'\nоружие:'+equip_inv[user_id]['weapon']+'\nноги:'+equip_inv[user_id]['Legs']+'\nботинки:'+equip_inv[user_id]['Legs']
     return(message)
 
@@ -113,10 +119,10 @@ def money_add(user_id, q_money, money_list):
 
 def money_show(user_id):
     shelvefile = shelve.open(path_get())
-    money_list = shelvefile['money'][user_id]
+    money_list = shelvefile['money']
     #shelvefile.close()
     print(money_list)
-    return(str(money_list)+'🗿')
+    return(str(money_list.get(user_id, 0))+'🗿')
 
 
 def case_open(user_id):
